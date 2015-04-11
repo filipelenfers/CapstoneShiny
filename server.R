@@ -16,5 +16,9 @@ shinyServer(function(input, output) {
     li <- paste("<ul>",li,"</ul>",sep = "")
     HTML(li)
   })
+  
+  output$input <- renderText({
+    input$sentence
+  })
 
 })
