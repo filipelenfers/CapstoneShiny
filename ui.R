@@ -24,7 +24,7 @@ shinyUI(fluidPage(
     # Show a plot of the generated distribution
     mainPanel(
       tabsetPanel(
-        tabPanel("Predictions", textOutput('predicted.word')), 
+        tabPanel("Predictions", htmlOutput('predicted.word')), 
         tabPanel("About this app", p("TODO text abou this app.") )
       )
     )
