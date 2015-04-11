@@ -2,7 +2,7 @@ library(tm)
 library(data.table)
 
 #All the data has the score pre calculated considering alpha as 0.4
-load("spData.RData")
+load("spData2.RData")
 
 predict <- function(input,num.results = 3) {
   #Clean input
