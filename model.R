@@ -29,13 +29,16 @@ predict <- function(input,num.results = 3) {
   if(num.rows < num.results) {
     #3-gram case, 0.4 (for this 4-gram model) , just the top num.results
     trigram.subset <- trigram.data.table[key == trigram.key,]
+    trigram.subset <- trigram.subset[!(trigram.subset$target %chin% predictions$target),]
     trigram.predictions <- head(trigram.subset[order(trigram.subset$score, decreasing = T)],n = num.results-num.rows)
+    
     predictions <- rbind(predictions, trigram.predictions)
     num.rows <- nrow(predictions)
     
     if(num.rows < num.results) {
       #2-gram case, 0.4 * 0.4 (for this 4-gram model) , just the top num.results
       bigram.subset <- bigram.data.table[key == bigram.key,]
+      bigram.subset <- bigram.subset[!(bigram.subset$target %chin% predictions$target),]
       bigram.predictions <- head(bigram.subset[order(bigram.subset$score, decreasing = T)],n = num.results-num.rows)
       predictions <- rbind(predictions, bigram.predictions)
       num.rows <- nrow(predictions)     
