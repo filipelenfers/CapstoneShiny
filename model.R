@@ -4,6 +4,9 @@ library(data.table)
 #All the data has the score pre calculated considering alpha as 0.4
 load("spData3.RData")
 
+bad.words <- read.csv("en_profanity_words.txt")
+bad.words <- tolower(bad.words[,1])
+
 predict <- function(input,num.results = 3) {
   #Clean input
   input <- tolower(input) 
@@ -50,4 +53,18 @@ predict <- function(input,num.results = 3) {
   }
   #predictions <- predictions[order(predictions$score, decreasing = T)]
   return(predictions$target)
+}
+
+profanityRemover <- function(words) {
+  for(i in 1:length(words)){
+    if(words[i] %in% bad.words) {
+      words[i] <- asteriskWord(words[i])
+    } 
+  }
+  words
+}
+
+asteriskWord <- function(word) {
+  letters <- unlist(strsplit(word,split=""))
+  paste0(letters[1],paste0(rep("*",length(letters)-2),collapse="") ,letters[length(letters)] )
 }

@@ -9,10 +9,15 @@ library(shiny)
 
 source("model.R")
 
+
+
+
 shinyServer(function(input, output) {
   
   output$predicted.word <- renderUI({
-    predictions <- predict(input$sentence)
+    predictions <- predict(input$sentence) # predict next words
+    predictions <- profanityRemover(predictions) # remove profanity
+    
     best <- predictions[1]
     rest <- predictions[2:length(predictions)]
     best <- paste0("<p><b>Best guess:</b> ", best, "</p>")
