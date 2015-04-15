@@ -2,7 +2,7 @@ library(tm)
 library(data.table)
 
 #All the data has the score pre calculated considering alpha as 0.4
-load("spData3.RData")
+load("spData4.RData")
 
 bad.words <- read.csv("en_profanity_words.txt")
 bad.words <- tolower(bad.words[,1])
