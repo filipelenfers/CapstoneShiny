@@ -34,6 +34,7 @@ shinyUI(fluidPage(
                                      a("http://www.aclweb.org/anthology/D07-1090.pdf", href= "http://www.aclweb.org/anthology/D07-1090.pdf"),
                                      ". This algorithm is fast and simple, perfect for limited enviroments like this web app."
                                      ),
+                 p("Profanity will be masked, just showing the first and the last letters, the other letters will be replaced by '*'."),
                  p("This application was done to complete the Coursera Data Science Specialization."),
                  p("Author: Filipe Pais Lenfers <filipelenfers@gmail.com>")
                  )
